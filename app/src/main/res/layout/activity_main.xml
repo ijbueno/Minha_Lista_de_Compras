@@ -20,4 +20,14 @@
         app:layout_constraintTop_toTopOf="parent"></com.budiyev.android.codescanner.CodeScannerView>
 
 
+    <View
+        android:layout_width="380dp"
+        android:layout_height="2dp"
+        android:background="#FFC107"
+        android:focusable="auto"
+        app:layout_constraintBottom_toBottomOf="@+id/scanner_view"
+        app:layout_constraintEnd_toEndOf="@+id/scanner_view"
+        app:layout_constraintStart_toStartOf="@+id/scanner_view"
+        app:layout_constraintTop_toTopOf="@+id/scanner_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
