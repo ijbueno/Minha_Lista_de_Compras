@@ -12,11 +12,12 @@
         android:layout_height="370dp"
         android:focusable="auto"
         app:autoFocusButtonVisible="true"
+        app:frameAspectRatioWidth="1.7"
+        app:frameSize="0.95"
         app:frameVisible="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </com.budiyev.android.codescanner.CodeScannerView>
+        app:layout_constraintTop_toTopOf="parent"></com.budiyev.android.codescanner.CodeScannerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
