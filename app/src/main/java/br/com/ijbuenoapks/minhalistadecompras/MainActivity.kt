@@ -9,6 +9,8 @@ import androidx.core.app.ActivityCompat
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
+import com.budiyev.android.codescanner.DecodeCallback
+import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +37,23 @@ class MainActivity : AppCompatActivity() {
         codeScanner.isFlashEnabled = false
 
         requestCamera()
+
+        // Callbacks
+        codeScanner.decodeCallback = DecodeCallback {
+            runOnUiThread {
+                Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+            }
+        }
+        codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
+            runOnUiThread {
+                Toast.makeText(this, "Camera initialization error: ${it.message}",
+                    Toast.LENGTH_LONG).show()
+            }
+        }
+
+        scannerView.setOnClickListener {
+            codeScanner.startPreview()
+        }
     }
 
     private fun requestCamera() {
