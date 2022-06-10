@@ -142,6 +142,8 @@
         android:digits="1234567890.,"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3"

@@ -42,4 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //dependencia para trabalhar com qrcode
     implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
+    //dependencia pra retorno de informaão web
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
 }
