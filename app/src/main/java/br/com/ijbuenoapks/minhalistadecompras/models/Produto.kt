@@ -1,4 +1,9 @@
 package br.com.ijbuenoapks.minhalistadecompras.models
 
-class Produto {
-}
+data class Produto (
+    val id : Long,
+    val produto : String,
+    val descricao : String,
+    val valor : Float,
+    val codigoBarras : String
+        )
