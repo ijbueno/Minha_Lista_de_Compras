@@ -59,63 +59,63 @@
         app:layout_constraintTop_toTopOf="@+id/txtNomeProduto" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cmdAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/adicionarItem"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/cmdMais"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeProduto" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/cmdLimparScanAtual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/LimparScan"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/cmdAdicionar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtQtd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/qtdItens"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="@+id/cmdMais"
+        app:layout_constraintEnd_toStartOf="@+id/cmdMenos"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/cmdMais"
+        app:layout_constraintTop_toTopOf="@+id/cmdMais" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cmdMais"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:text="@string/mais"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/cmdAdicionar"
+        app:layout_constraintEnd_toStartOf="@+id/txtQtd"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/cmdAdicionar"
+        app:layout_constraintTop_toTopOf="@+id/cmdAdicionar" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/cmdMenos"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:text="@string/menos"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/txtQtd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/txtQtd"
+        app:layout_constraintTop_toTopOf="@+id/txtQtd" />
 
     <TextView
         android:id="@+id/textView2"
@@ -133,7 +133,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txtOrcamentoInicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -156,6 +156,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toTopOf="@+id/txtOrcamentoInicial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
