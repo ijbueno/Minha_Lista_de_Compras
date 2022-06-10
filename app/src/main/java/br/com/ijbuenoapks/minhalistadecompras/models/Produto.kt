@@ -1,9 +1,11 @@
 package br.com.ijbuenoapks.minhalistadecompras.models
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class Produto (
-    val id : Long,
-    val produto : String,
-    val descricao : String,
-    val valor : Float,
-    val codigoBarras : String
+    @JsonProperty("id") val id : Long,
+    @JsonProperty("produto") val produto : String,
+    @JsonProperty("descricao") val descricao : String,
+    @JsonProperty("valor") val valor : Float,
+    @JsonProperty("codigoBarras") val codigoBarras : String
         )
