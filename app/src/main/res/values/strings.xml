@@ -4,7 +4,7 @@
     <string name="txtValorProduto">0,00</string>
     <string name="SimboloReais">R$:</string>
     <string name="adicionarItem">Adicionar</string>
-    <string name="naoAdiconarItem">Não Adicionar</string>
+    <string name="LimparScan">Limpar Scan</string>
     <string name="qtdItens">100</string>
     <string name="mais">+</string>
     <string name="menos">-</string>
