@@ -7,6 +7,6 @@ import retrofit2.http.Path
 
 interface ProdutoService {
 
-    @GET("{codigoBarras}/json")
+    @GET("{codigoBarras}")
     fun buscarCodigoDeBarras(@Path("codigoBarras") codigoDeBarras : String?) : Call<Produto?>?
 }
