@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
+import com.budiyev.android.codescanner.CodeScannerView
+import com.budiyev.android.codescanner.ScanMode
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +21,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //recupero o scanner view
+        val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
+        codeScanner = CodeScanner(this, scannerView)
+
+        //parametros iniciais pra o scanner
+        codeScanner.camera = CodeScanner.CAMERA_BACK //<- seto comente como a de tras inicinalmente
+        codeScanner.formats = CodeScanner.ALL_FORMATS //le tanto barcode quando qrcode
+        codeScanner.autoFocusMode = AutoFocusMode.SAFE
+        codeScanner.scanMode = ScanMode.SINGLE
+        codeScanner.isAutoFocusEnabled = true
+        codeScanner.isFlashEnabled = false
+
+        requestCamera()
     }
 
     private fun requestCamera() {
