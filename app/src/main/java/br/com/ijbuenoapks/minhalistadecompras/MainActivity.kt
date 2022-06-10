@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     //variaveis para requisição de permição e da camera
     private val PERMISSION_REQUEST_CAMERA = 0
     private lateinit var codeScanner: CodeScanner
+    private var codBarScaneado : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                codBarScaneado = it.text
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
