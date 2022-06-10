@@ -4,14 +4,20 @@ import android.Manifest
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import br.com.ijbuenoapks.minhalistadecompras.configuracoes.RetrofitConfig
+import br.com.ijbuenoapks.minhalistadecompras.models.Produto
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,8 +50,24 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
                 //Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
                 codBarScaneado = it.text
+
+                //busco na base de dados
+                val call : Call<Produto?>? = RetrofitConfig().getProdutoService()!!.buscarCodigoDeBarras(
+                    codBarScaneado  )
+                call?.enqueue(object : Callback<Produto?>{
+                    override fun onResponse(call: Call<Produto?>, response: Response<Produto?>) {
+                        val produto : Produto = response.body()!!
+                        System.out.println(produto.toString())
+                    }
+
+                    override fun onFailure(call: Call<Produto?>, t: Throwable) {
+                        Log.e("PRODUTOSERVICE -> ", "Erro ao buscar o Codigo de Barras + " +
+                                t.message)
+                    }
+                })
             }
         }
+
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             runOnUiThread {
                 Toast.makeText(this, "Camera initialization error: ${it.message}",
