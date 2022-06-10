@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import br.com.ijbuenoapks.minhalistadecompras.configuracoes.RetrofitConfig
@@ -27,9 +28,17 @@ class MainActivity : AppCompatActivity() {
     private var codBarScaneado : String = ""
 
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //variaveis para trabalhar com os campos e botoes
+        val txtNomeProduto = findViewById<TextView>(R.id.txtNomeProduto)
+        val txtValor = findViewById<TextView>(R.id.txtValorProduto)
+
 
         //recupero o scanner view
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
@@ -58,6 +67,8 @@ class MainActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<Produto?>, response: Response<Produto?>) {
                         val produto : Produto = response.body()!!
                         System.out.println(produto.toString())
+                        txtNomeProduto.text = produto.produto
+                        txtValor.text = produto.valor.toString()
                     }
 
                     override fun onFailure(call: Call<Produto?>, t: Throwable) {
