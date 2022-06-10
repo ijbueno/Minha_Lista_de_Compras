@@ -10,7 +10,7 @@ class RetrofitConfig {
 
     fun RetrofitConfig(){
         retrofit = Retrofit.Builder()
-            .baseUrl("http://localhost:8080/api/produtos/codigoBarras/")
+            .baseUrl("http://192.168.0.148:8080/api/produtos/codigoBarras/")
             .addConverterFactory(JacksonConverterFactory.create())
             .build()
     }
