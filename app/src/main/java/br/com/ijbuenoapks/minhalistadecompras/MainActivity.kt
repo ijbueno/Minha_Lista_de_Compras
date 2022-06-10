@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<Produto?>, t: Throwable) {
                         Log.e("PRODUTOSERVICE -> ", "Erro ao buscar o Codigo de Barras + " +
-                                t.message)
+                                t.message )
                     }
                 })
             }
