@@ -1,6 +1,7 @@
 package br.com.ijbuenoapks.minhalistadecompras.adapter
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -15,7 +16,13 @@ class AdapterProduto(
     ) : RecyclerView.Adapter<AdapterProduto.ProdutoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
-        TODO("Not yet implemented")
+        val itemLista = LayoutInflater.from(context)
+            .inflate(
+                R.layout.itens_da_lista,
+                parent,
+                false
+            )
+        return ProdutoViewHolder(itemLista)
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
