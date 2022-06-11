@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var cmdMais : Button
     lateinit var cmdMenos : Button
     lateinit var cmdLimparScanAtual : Button
-    lateinit var cmdCancelar : Button
     lateinit var cmdFinalizar : Button
 
 
@@ -56,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         txtQtd = findViewById<TextView>(R.id.txtQtd)
         cmdMenos = findViewById<Button>(R.id.cmdMenos)
         cmdLimparScanAtual = findViewById<Button>(R.id.cmdLimparScanAtual)
-        cmdCancelar = findViewById<Button>(R.id.cmdCancelar)
         cmdFinalizar = findViewById<Button>(R.id.cmdFinalizar)
 
 

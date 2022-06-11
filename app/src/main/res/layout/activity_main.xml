@@ -76,7 +76,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/LimparScan"
-        app:layout_constraintEnd_toStartOf="@+id/cmdCancelar"
+        app:layout_constraintEnd_toStartOf="@+id/cmdFinalizar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cmdAdicionar" />
@@ -183,19 +183,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/Finalizar"
-        app:layout_constraintBottom_toBottomOf="@+id/cmdCancelar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cmdCancelar"
-        app:layout_constraintTop_toTopOf="@+id/cmdCancelar" />
-
-    <Button
-        android:id="@+id/cmdCancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Cancelar"
         app:layout_constraintBottom_toBottomOf="@+id/cmdLimparScanAtual"
-        app:layout_constraintEnd_toStartOf="@+id/cmdFinalizar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cmdLimparScanAtual"
         app:layout_constraintTop_toTopOf="@+id/cmdLimparScanAtual" />
