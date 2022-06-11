@@ -5,6 +5,8 @@
     <string name="SimboloReais">R$:</string>
     <string name="adicionarItem">Adicionar</string>
     <string name="LimparScan">Limpar Scan</string>
+    <string name="Finalizar">Finalizar</string>
+    <string name="Cancelar">Cancelar</string>
     <string name="qtdItens">100</string>
     <string name="mais">+</string>
     <string name="menos">-</string>
