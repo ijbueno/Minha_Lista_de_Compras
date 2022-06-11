@@ -40,11 +40,10 @@ class AdapterProduto(
 
 
         inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-            val nome = itemView.findViewById<TextView>(R.id.txtNomeProduto)
-            val quantidade = itemView.findViewById<TextView>(R.id.txtQnatidadeNaLista)
-            val valor = itemView.findViewById<TextView>(R.id.txtValorNaLista)
-            //val botaoLixeira = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
-            val btnLixeira = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
+            val nome: TextView = itemView.findViewById<TextView>(R.id.txtNomeProdutoLista)
+            val quantidade: TextView = itemView.findViewById<TextView>(R.id.txtQnatidadeNaLista)
+            val valor: TextView = itemView.findViewById<TextView>(R.id.txtValorNaLista)
+            val btnLixeira: ImageButton = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
         }
 
 
