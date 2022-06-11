@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         //variaveis para trabalhar com os campos e botoes
         val txtNomeProduto = findViewById<TextView>(R.id.txtNomeProduto)
         val txtValor = findViewById<TextView>(R.id.txtValorProduto)
+        val cmdAdicionar = findViewById<Button>(R.id.cmdAdicionar)
+        val cmdMais = findViewById<Button>(R.id.cmdMais)
+        val txtQtd = findViewById<TextView>(R.id.txtQtd)
+        val cmdMenos = findViewById<Button>(R.id.cmdMenos)
+        val cmdLimparScanAtual = findViewById<Button>(R.id.cmdLimparScanAtual)
+        val cmdCancelar = findViewById<Button>(R.id.cmdCancelar)
+        val cmdFinalizar = findViewById<Button>(R.id.cmdFinalizar)
 
 
         //recupero o scanner view
