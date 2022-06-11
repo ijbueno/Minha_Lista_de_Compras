@@ -73,6 +73,9 @@ class MainActivity : AppCompatActivity() {
         codeScanner.isFlashEnabled = false
 
         requestCamera()
+        //limpo a tela inicialmente para dados default
+        limparDadosAtuaisScanner()
+
 
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
@@ -113,9 +116,31 @@ class MainActivity : AppCompatActivity() {
         scannerView.setOnClickListener {
             inicializarVisualizacaoScanner()
         }
+        //funçoes dos botoes
+        cmdLimparScanAtual.setOnClickListener{
+            limparDadosAtuaisScanner()
+        }
+        cmdMais.setOnClickListener {
+            var t : Int = txtQtd.text.toString().toInt()
+            t += 1
+            txtQtd.text = t.toString()
+        }
+        cmdMenos.setOnClickListener {
+            var t : Int = txtQtd.text.toString().toInt()
+            if(t > 1) t -= 1
+            txtQtd.text = t.toString()
+        }
     }
 
 
+
+
+    private fun limparDadosAtuaisScanner(){
+        txtNomeProduto.text = ""
+        txtQtd.text = "1"
+        txtValor.text="0,00"
+        inicializarVisualizacaoScanner()
+    }
 
     private fun inicializarVisualizacaoScanner(){
         codeScanner.startPreview()
