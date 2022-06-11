@@ -26,10 +26,14 @@ class AdapterProduto(
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
-        holder.nome.text = produtoLista[position].produto.produto
-        holder.quantidade.text = produtoLista[position].quantidade.toString()
-        holder.valor.text = produtoLista[position].produto.valor.toString()
-        holder.botaoLixeira.setImageResource(produtoLista[position].lixeira)
+        try {
+            holder.nome.text = produtoLista[position].produto.produto
+            holder.quantidade.text = produtoLista[position].quantidade.toString()
+            holder.valor.text = produtoLista[position].produto.valor.toString()
+            holder.btnLixeira.setImageResource(produtoLista[position].lixeira)
+        }catch (e: Exception){
+            println("ERRO --> " + e.message)
+        }
     }
 
     override fun getItemCount(): Int = produtoLista.size
@@ -37,9 +41,10 @@ class AdapterProduto(
 
         inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
             val nome = itemView.findViewById<TextView>(R.id.txtNomeProduto)
-            val quantidade = itemView.findViewById<TextView>(R.id.txtQtd)
-            val valor = itemView.findViewById<TextView>(R.id.txtValor)
-            val botaoLixeira = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
+            val quantidade = itemView.findViewById<TextView>(R.id.txtQnatidadeNaLista)
+            val valor = itemView.findViewById<TextView>(R.id.txtValorNaLista)
+            //val botaoLixeira = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
+            val btnLixeira = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
         }
 
 
