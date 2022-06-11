@@ -46,8 +46,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var cmdMenos : Button
     lateinit var cmdLimparScanAtual : Button
     lateinit var cmdFinalizar : Button
+    lateinit var txtGastoAteMomento : TextView
+
     //para a listagem
     lateinit var recycler: RecyclerView
+
+    //variavel para trabalho de valores
+    var soma : Float = 0F
 
 
 
@@ -66,6 +71,8 @@ class MainActivity : AppCompatActivity() {
         cmdFinalizar = findViewById<Button>(R.id.cmdFinalizar)
         //para trabalhar com o recyclerview
         recycler = findViewById(R.id.rvListaDeItens)
+        txtGastoAteMomento = findViewById(R.id.txtGastoAteMomento)
+
 
 
         //parametros iniciais para o recyclerview
@@ -157,8 +164,12 @@ class MainActivity : AppCompatActivity() {
                     produto)
             listaDeProduto.add(produtoLista)
             recycler.adapter = adapterProduto
-            limparDadosAtuaisScanner()
 
+            soma += (produto.valor * produtoLista.quantidade.toFloat())
+
+            txtGastoAteMomento.text = "Gasto até o momento R$: " + soma.toString().replace('.', ',')
+
+            limparDadosAtuaisScanner()
         }
     }
 
