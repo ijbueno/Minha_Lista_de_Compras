@@ -26,7 +26,10 @@ class AdapterProduto(
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.nome.text = produtoLista[position].produto.produto
+        holder.quantidade.text = produtoLista[position].quantidade.toString()
+        holder.valor.text = produtoLista[position].produto.valor.toString()
+        holder.botaoLixeira.setImageResource(produtoLista[position].lixeira)
     }
 
     override fun getItemCount(): Int = produtoLista.size
