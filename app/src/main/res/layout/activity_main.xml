@@ -14,28 +14,36 @@
         app:autoFocusButtonVisible="true"
         app:frameAspectRatioWidth="1.8"
         app:frameSize="0.9"
-        app:frameVisible="true"></com.budiyev.android.codescanner.CodeScannerView>
+        app:frameVisible="true"
+        app:layout_constraintTop_toTopOf="parent"></com.budiyev.android.codescanner.CodeScannerView>
 
 
     <View
         android:id="@+id/view"
         android:layout_width="380dp"
         android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="15dp"
         android:background="#FFC107"
         android:focusable="auto"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/scanner_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scanner_view" />
 
     <TextView
         android:id="@+id/txtNomeProduto"
         android:layout_width="258dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_blue_border"
         android:text="@string/txtNomeProduto"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintEnd_toStartOf="@+id/txtValorProduto"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanner_view" />
 
     <TextView
         android:id="@+id/txtValorProduto"
@@ -46,24 +54,33 @@
         android:textAlignment="textEnd"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtNomeProduto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtNomeProduto"
+        app:layout_constraintTop_toTopOf="@+id/txtNomeProduto" />
 
     <Button
         android:id="@+id/cmdAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/adicionarItem"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="263dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cmdMais"
+        app:layout_constraintEnd_toStartOf="@+id/cmdMais"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cmdMais" />
 
     <Button
         android:id="@+id/cmdLimparScanAtual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/LimparScan"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="319dp" />
+        app:layout_constraintEnd_toStartOf="@+id/cmdFinalizar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmdAdicionar" />
 
     <TextView
         android:id="@+id/txtQtd"
@@ -72,8 +89,11 @@
         android:text="@string/qtdItens"
         android:textSize="26sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="270dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cmdMenos"
+        app:layout_constraintEnd_toStartOf="@+id/cmdMenos"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cmdMais"
+        app:layout_constraintTop_toTopOf="@+id/cmdMenos" />
 
     <Button
         android:id="@+id/cmdMais"
@@ -82,29 +102,39 @@
         android:text="@string/mais"
         android:textSize="22sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="263dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtQtd"
+        app:layout_constraintEnd_toStartOf="@+id/txtQtd"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cmdAdicionar"
+        app:layout_constraintTop_toTopOf="@+id/txtQtd" />
 
     <Button
         android:id="@+id/cmdMenos"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:text="@string/menos"
         android:textSize="22sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="333dp"
-        tools:layout_editor_absoluteY="263dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtQtd"
+        app:layout_constraintTop_toBottomOf="@+id/txtValorProduto" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtGastoAteMomento"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/gastosTotais"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtOrcamentoInicial"
@@ -115,7 +145,7 @@
         android:inputType="numberDecimal"
         android:text="0"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/txtGastoAteMomento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -139,15 +169,24 @@
         android:id="@+id/rvListaDeItens"
         android:layout_width="395dp"
         android:layout_height="270dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="371dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtOrcamentoInicial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmdLimparScanAtual" />
 
     <Button
         android:id="@+id/cmdFinalizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Finalizar"
-        tools:layout_editor_absoluteX="242dp"
-        tools:layout_editor_absoluteY="319dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cmdLimparScanAtual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cmdLimparScanAtual"
+        app:layout_constraintTop_toTopOf="@+id/cmdLimparScanAtual" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
