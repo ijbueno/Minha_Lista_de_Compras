@@ -14,72 +14,56 @@
         app:autoFocusButtonVisible="true"
         app:frameAspectRatioWidth="1.8"
         app:frameSize="0.9"
-        app:frameVisible="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.budiyev.android.codescanner.CodeScannerView>
+        app:frameVisible="true"></com.budiyev.android.codescanner.CodeScannerView>
 
 
     <View
+        android:id="@+id/view"
         android:layout_width="380dp"
         android:layout_height="2dp"
         android:background="#FFC107"
         android:focusable="auto"
-        app:layout_constraintBottom_toBottomOf="@+id/scanner_view"
-        app:layout_constraintEnd_toEndOf="@+id/scanner_view"
-        app:layout_constraintStart_toStartOf="@+id/scanner_view"
-        app:layout_constraintTop_toTopOf="@+id/scanner_view" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="99dp" />
 
     <TextView
         android:id="@+id/txtNomeProduto"
         android:layout_width="258dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_blue_border"
         android:text="@string/txtNomeProduto"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scanner_view" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="208dp" />
 
     <TextView
         android:id="@+id/txtValorProduto"
-        android:layout_width="0dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_blue_border"
         android:text="@string/txtValorProduto"
         android:textAlignment="textEnd"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtNomeProduto"
-        app:layout_constraintTop_toTopOf="@+id/txtNomeProduto" />
+        tools:layout_editor_absoluteX="274dp"
+        tools:layout_editor_absoluteY="208dp" />
 
     <Button
         android:id="@+id/cmdAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/adicionarItem"
-        app:layout_constraintEnd_toStartOf="@+id/cmdMais"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNomeProduto" />
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="263dp" />
 
     <Button
         android:id="@+id/cmdLimparScanAtual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/LimparScan"
-        app:layout_constraintEnd_toStartOf="@+id/cmdFinalizar"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmdAdicionar" />
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="319dp" />
 
     <TextView
         android:id="@+id/txtQtd"
@@ -88,11 +72,8 @@
         android:text="@string/qtdItens"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/cmdMais"
-        app:layout_constraintEnd_toStartOf="@+id/cmdMenos"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cmdMais"
-        app:layout_constraintTop_toTopOf="@+id/cmdMais" />
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="270dp" />
 
     <Button
         android:id="@+id/cmdMais"
@@ -101,11 +82,8 @@
         android:text="@string/mais"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/cmdAdicionar"
-        app:layout_constraintEnd_toStartOf="@+id/txtQtd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cmdAdicionar"
-        app:layout_constraintTop_toTopOf="@+id/cmdAdicionar" />
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="263dp" />
 
     <Button
         android:id="@+id/cmdMenos"
@@ -114,79 +92,62 @@
         android:text="@string/menos"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtQtd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtQtd"
-        app:layout_constraintTop_toTopOf="@+id/txtQtd" />
+        tools:layout_editor_absoluteX="333dp"
+        tools:layout_editor_absoluteY="263dp" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
+        android:id="@+id/textView"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/gastosTotais"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="696dp" />
 
     <EditText
         android:id="@+id/txtOrcamentoInicial"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="45dp"
         android:digits="1234567890.,"
         android:ems="10"
         android:inputType="numberDecimal"
         android:text="0"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/rvListaDeItens"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/orcamentoInicial"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/txtOrcamentoInicial"
+        app:layout_constraintEnd_toStartOf="@+id/txtOrcamentoInicial"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtOrcamentoInicial" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListaDeItens"
-        android:layout_width="0dp"
+        android:layout_width="395dp"
         android:layout_height="270dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtOrcamentoInicial"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmdLimparScanAtual" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="371dp" />
 
     <Button
         android:id="@+id/cmdFinalizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/Finalizar"
-        app:layout_constraintBottom_toBottomOf="@+id/cmdLimparScanAtual"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cmdLimparScanAtual"
-        app:layout_constraintTop_toTopOf="@+id/cmdLimparScanAtual" />
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="319dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
