@@ -130,9 +130,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-
     private fun limparDadosAtuaisScanner(){
         txtNomeProduto.text = ""
         txtQtd.text = "1"

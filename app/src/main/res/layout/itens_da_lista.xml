@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/txtValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="R$ 100,00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtQnatidade"
+        app:layout_constraintEnd_toStartOf="@+id/botaoLixeira"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtQnatidade"
+        app:layout_constraintTop_toTopOf="@+id/txtQnatidade"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtQnatidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtNomeProduto"
+        app:layout_constraintEnd_toStartOf="@+id/txtValor"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtNomeProduto"
+        app:layout_constraintTop_toTopOf="@+id/txtNomeProduto" />
+
+    <ImageButton
+        android:id="@+id/botaoLixeira"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:adjustViewBounds="false"
+        android:background="#00000000"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/txtValor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtValor"
+        app:layout_constraintTop_toTopOf="@+id/txtValor"
+        app:srcCompat="@drawable/lixeira" />
+
+    <TextView
+        android:id="@+id/txtNomeProduto"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:maxLength="13"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtQnatidade"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="7dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
