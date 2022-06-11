@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                         produto = response.body()!!
 
                         //faco a verificalao para nao adicionar um item vazio ou nulo
-                        if(produto != null) {
+                        if((produto != null) ||(!produto.id.equals(0)) ) {
 
                             //produtoLista = ProdutoLista()
                             //listaDeProduto.add(    produto)
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             txtQtd.text = t.toString()
         }
         cmdAdicionar.setOnClickListener {
-            var produtoLista : ProdutoLista = ProdutoLista(
+            var produtoLista  = ProdutoLista(
                     txtQtd.text.toString().toInt(),
                     R.drawable.lixeira,
                     produto)
@@ -167,6 +167,8 @@ class MainActivity : AppCompatActivity() {
         txtQtd.text = "1"
         txtValor.text="0,00"
         inicializarVisualizacaoScanner()
+        //resseto o produto para um novo produto
+        produto = Produto(0,"","",0F,"")
     }
 
     private fun inicializarVisualizacaoScanner(){
