@@ -31,6 +31,17 @@ class MainActivity : AppCompatActivity() {
     //variavel para a lista de produtos
     private val listaDeProduto : MutableList<Produto> = mutableListOf()
 
+    //variaveis dos bjetos da tela
+    lateinit var txtNomeProduto : TextView
+    lateinit var txtValor : TextView
+    lateinit var txtQtd : TextView
+    lateinit var cmdAdicionar : Button
+    lateinit var cmdMais : Button
+    lateinit var cmdMenos : Button
+    lateinit var cmdLimparScanAtual : Button
+    lateinit var cmdCancelar : Button
+    lateinit var cmdFinalizar : Button
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,15 +49,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //variaveis para trabalhar com os campos e botoes
-        val txtNomeProduto = findViewById<TextView>(R.id.txtNomeProduto)
-        val txtValor = findViewById<TextView>(R.id.txtValorProduto)
-        val cmdAdicionar = findViewById<Button>(R.id.cmdAdicionar)
-        val cmdMais = findViewById<Button>(R.id.cmdMais)
-        val txtQtd = findViewById<TextView>(R.id.txtQtd)
-        val cmdMenos = findViewById<Button>(R.id.cmdMenos)
-        val cmdLimparScanAtual = findViewById<Button>(R.id.cmdLimparScanAtual)
-        val cmdCancelar = findViewById<Button>(R.id.cmdCancelar)
-        val cmdFinalizar = findViewById<Button>(R.id.cmdFinalizar)
+        txtNomeProduto = findViewById<TextView>(R.id.txtNomeProduto)
+        txtValor = findViewById<TextView>(R.id.txtValorProduto)
+        cmdAdicionar = findViewById<Button>(R.id.cmdAdicionar)
+        cmdMais = findViewById<Button>(R.id.cmdMais)
+        txtQtd = findViewById<TextView>(R.id.txtQtd)
+        cmdMenos = findViewById<Button>(R.id.cmdMenos)
+        cmdLimparScanAtual = findViewById<Button>(R.id.cmdLimparScanAtual)
+        cmdCancelar = findViewById<Button>(R.id.cmdCancelar)
+        cmdFinalizar = findViewById<Button>(R.id.cmdFinalizar)
 
 
         //recupero o scanner view
@@ -100,9 +111,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         scannerView.setOnClickListener {
-            codeScanner.startPreview()
+            inicializarVisualizacaoScanner()
         }
     }
+
+
+
+    private fun inicializarVisualizacaoScanner(){
+        codeScanner.startPreview()
+    }
+
 
     private fun requestCamera() {
         if (ActivityCompat.checkSelfPermission(
