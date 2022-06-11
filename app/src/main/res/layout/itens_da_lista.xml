@@ -14,15 +14,15 @@
         android:text="R$ 100,00"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtQnatidade"
+        app:layout_constraintBottom_toBottomOf="@+id/txtQnatidadeNaLista"
         app:layout_constraintEnd_toStartOf="@+id/botaoLixeira"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtQnatidade"
-        app:layout_constraintTop_toTopOf="@+id/txtQnatidade"
+        app:layout_constraintStart_toEndOf="@+id/txtQnatidadeNaLista"
+        app:layout_constraintTop_toTopOf="@+id/txtQnatidadeNaLista"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/txtQnatidade"
+        android:id="@+id/txtQnatidadeNaLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
@@ -61,7 +61,7 @@
         android:textAlignment="textStart"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/txtQnatidade"
+        app:layout_constraintEnd_toStartOf="@+id/txtQnatidadeNaLista"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="7dp" />
