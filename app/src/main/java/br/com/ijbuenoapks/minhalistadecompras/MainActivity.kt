@@ -11,8 +11,10 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.ijbuenoapks.minhalistadecompras.adapter.AdapterProduto
 import br.com.ijbuenoapks.minhalistadecompras.configuracoes.RetrofitConfig
 import br.com.ijbuenoapks.minhalistadecompras.models.Produto
+import br.com.ijbuenoapks.minhalistadecompras.models.ProdutoLista
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
@@ -31,7 +33,9 @@ class MainActivity : AppCompatActivity() {
     private var codBarScaneado : String = ""
 
     //variavel para a lista de produtos
-    private val listaDeProduto : MutableList<Produto> = mutableListOf()
+    private val listaDeProduto : MutableList<ProdutoLista> = mutableListOf()
+    lateinit var adapterProduto: AdapterProduto
+    lateinit var produto: Produto
 
     //variaveis dos bjetos da tela
     lateinit var txtNomeProduto : TextView
@@ -68,6 +72,10 @@ class MainActivity : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycler.setHasFixedSize(true)
 
+        //configuração para o adapter
+        adapterProduto= AdapterProduto(this, listaDeProduto)
+        //seto o adapter no recycles
+        recycler.adapter = adapterProduto
 
         //recupero o scanner view
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
@@ -97,10 +105,13 @@ class MainActivity : AppCompatActivity() {
                     codBarScaneado  )
                 call?.enqueue(object : Callback<Produto?>{
                     override fun onResponse(call: Call<Produto?>, response: Response<Produto?>) {
-                        val produto : Produto = response.body()!!
+                        produto = response.body()!!
+
                         //faco a verificalao para nao adicionar um item vazio ou nulo
                         if(produto != null) {
-                            listaDeProduto.add(produto)
+
+                            //produtoLista = ProdutoLista()
+                            //listaDeProduto.add(    produto)
                             //System.out.println(produto.toString())
                             txtNomeProduto.text = produto.produto
                             txtValor.text = produto.valor.toString().replace('.',',')
@@ -140,6 +151,13 @@ class MainActivity : AppCompatActivity() {
             txtQtd.text = t.toString()
         }
         cmdAdicionar.setOnClickListener {
+            var produtoLista : ProdutoLista = ProdutoLista(
+                    txtQtd.text.toString().toInt(),
+                    R.drawable.lixeira,
+                    produto)
+            listaDeProduto.add(produtoLista)
+            recycler.adapter = adapterProduto
+            limparDadosAtuaisScanner()
 
         }
     }
