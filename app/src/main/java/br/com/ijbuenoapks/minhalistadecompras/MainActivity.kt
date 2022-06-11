@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
     private var codBarScaneado : String = ""
 
-
+    //variavel para a lista de produtos
+    private val listaDeProduto : MutableList<Produto> = mutableListOf()
 
 
 
@@ -66,9 +67,13 @@ class MainActivity : AppCompatActivity() {
                 call?.enqueue(object : Callback<Produto?>{
                     override fun onResponse(call: Call<Produto?>, response: Response<Produto?>) {
                         val produto : Produto = response.body()!!
-                        System.out.println(produto.toString())
-                        txtNomeProduto.text = produto.produto
-                        txtValor.text = produto.valor.toString()
+                        //faco a verificalao para nao adicionar um item vazio ou nulo
+                        if(produto != null) {
+                            listaDeProduto.add(produto)
+                            //System.out.println(produto.toString())
+                            txtNomeProduto.text = produto.produto
+                            txtValor.text = produto.valor.toString()
+                        }
                     }
 
                     override fun onFailure(call: Call<Produto?>, t: Throwable) {
