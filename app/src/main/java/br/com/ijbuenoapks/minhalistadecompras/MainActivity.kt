@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.ijbuenoapks.minhalistadecompras.configuracoes.RetrofitConfig
 import br.com.ijbuenoapks.minhalistadecompras.models.Produto
 import com.budiyev.android.codescanner.AutoFocusMode
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var cmdMenos : Button
     lateinit var cmdLimparScanAtual : Button
     lateinit var cmdFinalizar : Button
+    //para a listagem
+    lateinit var recycler: RecyclerView
 
 
 
@@ -56,6 +60,13 @@ class MainActivity : AppCompatActivity() {
         cmdMenos = findViewById<Button>(R.id.cmdMenos)
         cmdLimparScanAtual = findViewById<Button>(R.id.cmdLimparScanAtual)
         cmdFinalizar = findViewById<Button>(R.id.cmdFinalizar)
+        //para trabalhar com o recyclerview
+        recycler = findViewById(R.id.rvListaDeItens)
+
+
+        //parametros iniciais para o recyclerview
+        recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recycler.setHasFixedSize(true)
 
 
         //recupero o scanner view
@@ -127,6 +138,9 @@ class MainActivity : AppCompatActivity() {
             var t : Int = txtQtd.text.toString().toInt()
             if(t > 1) t -= 1
             txtQtd.text = t.toString()
+        }
+        cmdAdicionar.setOnClickListener {
+
         }
     }
 
