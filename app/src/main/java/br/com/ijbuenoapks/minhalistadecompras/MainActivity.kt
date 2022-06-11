@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                             listaDeProduto.add(produto)
                             //System.out.println(produto.toString())
                             txtNomeProduto.text = produto.produto
-                            txtValor.text = produto.valor.toString()
+                            txtValor.text = produto.valor.toString().replace('.',',')
                         }
                     }
 
@@ -145,7 +145,6 @@ class MainActivity : AppCompatActivity() {
     private fun inicializarVisualizacaoScanner(){
         codeScanner.startPreview()
     }
-
 
     private fun requestCamera() {
         if (ActivityCompat.checkSelfPermission(
