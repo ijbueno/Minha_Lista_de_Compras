@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -47,13 +48,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var cmdLimparScanAtual : Button
     lateinit var cmdFinalizar : Button
     lateinit var txtGastoAteMomento : TextView
+    lateinit var txtOrcamentoInicial : EditText
 
     //para a listagem
     lateinit var recycler: RecyclerView
 
     //variavel para trabalho de valores
     var soma : Float = 0F
-
+    var saldoAtual : Float = 0F
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         //para trabalhar com o recyclerview
         recycler = findViewById(R.id.rvListaDeItens)
         txtGastoAteMomento = findViewById(R.id.txtGastoAteMomento)
-
+        txtOrcamentoInicial = findViewById(R.id.txtOrcamentoInicial)
 
 
         //parametros iniciais para o recyclerview
@@ -165,12 +167,23 @@ class MainActivity : AppCompatActivity() {
             listaDeProduto.add(produtoLista)
             recycler.adapter = adapterProduto
 
-            soma += (produto.valor * produtoLista.quantidade.toFloat())
+            val resultado = reallizaCalculos(produto.valor, produtoLista.quantidade, txtOrcamentoInicial.text.toString().toFloat())
 
-            txtGastoAteMomento.text = "Gasto até o momento R$: " + soma.toString().replace('.', ',')
+            txtGastoAteMomento.text = "Gasto até o momento R$: " + resultado.replace('.', ',')
 
             limparDadosAtuaisScanner()
         }
+    }
+
+    private fun   reallizaCalculos(valorProduto : Float, qtdDeItens : Int, valorOrcamento : Float) : String{
+        var valor  = "0,00"
+        var soma  = valorProduto * qtdDeItens
+
+        saldoAtual += soma
+
+        valor = (valorOrcamento - saldoAtual).toString()
+
+        return valor
     }
 
     private fun limparDadosAtuaisScanner(){
