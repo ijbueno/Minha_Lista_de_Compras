@@ -1,6 +1,7 @@
 package br.com.ijbuenoapks.minhalistadecompras
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -196,12 +198,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     private val textWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {  }
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            val imm: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            var x = imm.isActive
+
+            if (!x)
+                Toast.makeText(applicationContext, s, Toast.LENGTH_SHORT).show()
+
             if (start == 12) {
-              //  Toast.makeText(applicationContext, s, Toast.LENGTH_SHORT).show()
+              //
             }
         }
     }
