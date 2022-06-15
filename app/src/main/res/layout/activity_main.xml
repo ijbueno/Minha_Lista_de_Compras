@@ -141,8 +141,9 @@
         android:layout_width="190dp"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
-
-        android:digits="1234567890,"
+        android:selectAllOnFocus="true"
+        android:hint="0,00"
+        android:digits="1234567890.,"
         android:ems="10"
         android:inputType="numberDecimal"
         android:text="0"
@@ -151,7 +152,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/cmdLimparScanAtual"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        android:imeOptions="actionDone"/>
 
     <TextView
         android:id="@+id/textView3"

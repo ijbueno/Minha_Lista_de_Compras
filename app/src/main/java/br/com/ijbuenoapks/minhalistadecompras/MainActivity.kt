@@ -2,13 +2,15 @@ package br.com.ijbuenoapks.minhalistadecompras
 
 import android.Manifest
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,15 +18,12 @@ import br.com.ijbuenoapks.minhalistadecompras.adapter.AdapterProduto
 import br.com.ijbuenoapks.minhalistadecompras.configuracoes.RetrofitConfig
 import br.com.ijbuenoapks.minhalistadecompras.models.Produto
 import br.com.ijbuenoapks.minhalistadecompras.models.ProdutoLista
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.CodeScannerView
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
+import br.com.ijbuenoapks.minhalistadecompras.utilidades.FormataNumero
+import com.budiyev.android.codescanner.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     //variavel para trabalho de valores
     var soma : Float = 0F
     var saldoAtual : Float = 0F
+    //variavel que tera o valor do orcamento
+    var textoOrcamento = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -145,6 +146,12 @@ class MainActivity : AppCompatActivity() {
         scannerView.setOnClickListener {
             inicializarVisualizacaoScanner()
         }
+
+
+
+
+
+
         //funçoes dos botoes
         cmdLimparScanAtual.setOnClickListener{
             limparDadosAtuaisScanner()
@@ -173,7 +180,14 @@ class MainActivity : AppCompatActivity() {
 
             limparDadosAtuaisScanner()
         }
+
+
+        //adicionando textwacher
+        //txtOrcamentoInicial.addTextChangedListener(textWatcher)
+        txtOrcamentoInicial.filters = arrayOf(FormataNumero(10, 2))
+
     }
+
 
     private fun   reallizaCalculos(valorProduto : Float, qtdDeItens : Int, valorOrcamento : Float) : String{
         var valor  = "0,00"
