@@ -5,16 +5,17 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
-import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.app.AlertDialog
+import android.content.DialogInterface
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,7 +53,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var cmdLimparScanAtual : Button
     lateinit var cmdFinalizar : Button
     lateinit var txtGastoAteMomento : TextView
-    lateinit var txtOrcamentoInicial : EditText
+    lateinit var txtOrcamentoInicial : TextView
+
+    //verificar ainda
+    lateinit var imm : InputMethodManager
+    var orcamento = ""
+
 
     //para a listagem
     lateinit var recycler: RecyclerView
@@ -61,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     var soma : Float = 0F
     var saldoAtual : Float = 0F
     //variavel que tera o valor do orcamento
-    var textoOrcamento = ""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,6 +88,12 @@ class MainActivity : AppCompatActivity() {
         txtGastoAteMomento = findViewById(R.id.txtGastoAteMomento)
         txtOrcamentoInicial = findViewById(R.id.txtOrcamentoInicial)
 
+
+
+        //InputMethodManager imm = (InputMethodManager)getSystemService(context.INPUT_METHOD_SERVICE);
+        //           imm.hideSoftInputFromWindow(text.getWindowToken(), 0);
+
+        imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         //parametros iniciais para o recyclerview
         recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -152,11 +164,6 @@ class MainActivity : AppCompatActivity() {
             inicializarVisualizacaoScanner()
         }
 
-
-
-
-
-
         //funçoes dos botoes
         cmdLimparScanAtual.setOnClickListener{
             limparDadosAtuaisScanner()
@@ -186,34 +193,69 @@ class MainActivity : AppCompatActivity() {
             limparDadosAtuaisScanner()
         }
 
-
         //adicionando textwacher
         //txtOrcamentoInicial.addTextChangedListener(textWatcher)
-        txtOrcamentoInicial.filters = arrayOf(FormataNumero(10, 2))
-        txtOrcamentoInicial.addTextChangedListener(textWatcher)
+       // txtOrcamentoInicial.filters = arrayOf(FormataNumero(10, 2))
+        //txtOrcamentoInicial.addTextChangedListener(textWatcher)
 
-
-
+        //txtOrcamentoInicial.setOnClickListener {
+            showdialog()
+        //}
 
     }
 
 
 
     private val textWatcher = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {  }
+        override fun afterTextChanged(s: Editable?) {
+        }
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            val imm: InputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            var x = imm.isActive
 
-            if (!x)
-                Toast.makeText(applicationContext, s, Toast.LENGTH_SHORT).show()
 
-            if (start == 12) {
-              //
+            var str = s.toString()
+            txtOrcamentoInicial.removeTextChangedListener(this)
+
+            if (str.contains('.')){
+                str = str.replace('.', ',')
             }
+            //Toast.makeText(applicationContext, s, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
+            //txtOrcamentoInicial.setText(str)
+            //txtOrcamentoInicial.setSelection(str.length)
+
+            txtOrcamentoInicial.addTextChangedListener(this)
+            txtOrcamentoInicial.setOnClickListener{
+
+
+            }
+
         }
+    }
+
+
+    fun showdialog(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Digite o valor do Orçamento")
+
+// Set up the input
+        val input = EditText(this)
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setHint("Digite o orçamento")
+        input.setRawInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER)
+        input.filters = arrayOf(FormataNumero(10, 2))
+
+        builder.setView(input)
+
+// Set up the buttons
+        builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
+            // Here you get get input text from the Edittext
+            orcamento = input.text.toString()
+            txtOrcamentoInicial.text = orcamento.replace('.', ',')
+        })
+        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+
+        builder.show()
     }
 
 
