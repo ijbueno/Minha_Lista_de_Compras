@@ -193,15 +193,12 @@ class MainActivity : AppCompatActivity() {
 
             limparDadosAtuaisScanner()
         }
-
-        //adicionando textwacher
-        //txtOrcamentoInicial.addTextChangedListener(textWatcher)
-       // txtOrcamentoInicial.filters = arrayOf(FormataNumero(10, 2))
-        //txtOrcamentoInicial.addTextChangedListener(textWatcher)
-
-        //txtOrcamentoInicial.setOnClickListener {
+        //inicio pedindo o valor do orçamento para o usuario
+        showdialog()
+        //defino no listner do label o valor a ser selecionado
+        txtOrcamentoInicial.setOnClickListener {
             showdialog()
-        //}
+        }
 
     }
 
@@ -213,24 +210,13 @@ class MainActivity : AppCompatActivity() {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-
             var str = s.toString()
             txtOrcamentoInicial.removeTextChangedListener(this)
 
             if (str.contains('.')){
                 str = str.replace('.', ',')
             }
-            //Toast.makeText(applicationContext, s, Toast.LENGTH_SHORT).show()
-            //Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
-            //txtOrcamentoInicial.setText(str)
-            //txtOrcamentoInicial.setSelection(str.length)
-
             txtOrcamentoInicial.addTextChangedListener(this)
-            txtOrcamentoInicial.setOnClickListener{
-
-
-            }
-
         }
     }
 
@@ -239,16 +225,14 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Digite o valor do Orçamento")
 
-// Set up the input
+        // Set up the input
         val input = EditText(this)
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setHint("Digite o orçamento")
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.hint = "Digite o orçamento"
         input.setRawInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER)
         input.filters = arrayOf(FormataNumero(10, 2))
-
         builder.setView(input)
-
-// Set up the buttons
+        // Set up the buttons
         builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
             // Here you get get input text from the Edittext
             orcamento = input.text.toString()
@@ -263,11 +247,8 @@ class MainActivity : AppCompatActivity() {
     private fun   reallizaCalculos(valorProduto : Float, qtdDeItens : Int, valorOrcamento : Float) : String{
         var valor  = "0,00"
         var soma  = valorProduto * qtdDeItens
-
         saldoAtual += soma
-
         valor = (valorOrcamento - saldoAtual).toString()
-
         return valor
     }
 
