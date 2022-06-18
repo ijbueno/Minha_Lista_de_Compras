@@ -180,18 +180,23 @@ class MainActivity : AppCompatActivity() {
             txtQtd.text = t.toString()
         }
         cmdAdicionar.setOnClickListener {
-            var produtoLista  = ProdutoLista(
+            try {
+
+                var produtoLista  = ProdutoLista(
                     txtQtd.text.toString().toInt(),
                     R.drawable.lixeira,
                     produto)
-            listaDeProduto.add(produtoLista)
-            recycler.adapter = adapterProduto
+                listaDeProduto.add(produtoLista)
+                recycler.adapter = adapterProduto
 
-            val resultado = reallizaCalculos(produto.valor, produtoLista.quantidade, txtOrcamentoInicial.text.toString().toFloat())
+                val resultado = reallizaCalculos(produto.valor, produtoLista.quantidade, txtOrcamentoInicial.text.toString().toFloat())
 
-            txtGastoAteMomento.text = "Gasto até o momento R$: " + resultado.replace('.', ',')
+                txtGastoAteMomento.text = "Gasto até o momento R$: " + resultado.replace('.', ',')
 
-            limparDadosAtuaisScanner()
+                limparDadosAtuaisScanner()
+            }catch (e : Exception){
+                println("Erro --> $e")
+            }
         }
         //inicio pedindo o valor do orçamento para o usuario
         showdialog()
