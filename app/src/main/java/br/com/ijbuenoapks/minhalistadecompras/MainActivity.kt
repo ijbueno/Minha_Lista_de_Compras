@@ -23,6 +23,7 @@ import br.com.ijbuenoapks.minhalistadecompras.adapter.AdapterProduto
 import br.com.ijbuenoapks.minhalistadecompras.configuracoes.RetrofitConfig
 import br.com.ijbuenoapks.minhalistadecompras.models.Produto
 import br.com.ijbuenoapks.minhalistadecompras.models.ProdutoLista
+import br.com.ijbuenoapks.minhalistadecompras.services.OnProdutoClickListener
 import br.com.ijbuenoapks.minhalistadecompras.utilidades.FormataNumero
 import com.budiyev.android.codescanner.*
 import retrofit2.Call
@@ -68,6 +69,15 @@ class MainActivity : AppCompatActivity(){
     //variavel que tera o valor do orcamento
 
 
+
+    private val onProdutoClickListener = object  : OnProdutoClickListener{
+        override fun onDelete(model: Produto) {
+           adapterProduto.de
+        }
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -97,7 +107,7 @@ class MainActivity : AppCompatActivity(){
         recycler.setHasFixedSize(true)
 
         //configuração para o adapter
-        adapterProduto= AdapterProduto(this, listaDeProduto)
+        adapterProduto= AdapterProduto(this, ,listaDeProduto )
         //seto o adapter no recycles
         recycler.adapter = adapterProduto
 
