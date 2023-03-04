@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.ijbuenoapks.minhalistadecompras.R
 import br.com.ijbuenoapks.minhalistadecompras.models.ProdutoLista
 
+
 class AdapterProduto(
     private val context : Context,
     private val produtoLista: MutableList<ProdutoLista>
@@ -22,6 +23,7 @@ class AdapterProduto(
                 parent,
                 false
             )
+
         return ProdutoViewHolder(itemLista)
     }
 
@@ -36,20 +38,14 @@ class AdapterProduto(
         }
     }
 
-
-
-
-
     override fun getItemCount(): Int = produtoLista.size
-
-
 
         inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val nome: TextView = itemView.findViewById<TextView>(R.id.txtNomeProdutoLista)
             val quantidade: TextView = itemView.findViewById<TextView>(R.id.txtQnatidadeNaLista)
             val valor: TextView = itemView.findViewById<TextView>(R.id.txtValorNaLista)
             val btnLixeira: ImageButton = itemView.findViewById<ImageButton>(R.id.botaoLixeira)
+            }
         }
 
 
-}

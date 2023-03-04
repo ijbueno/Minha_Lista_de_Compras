@@ -1,7 +1,9 @@
 package br.com.ijbuenoapks.minhalistadecompras
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
@@ -13,10 +15,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import android.app.AlertDialog
-import android.content.DialogInterface
-import android.view.View
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +30,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     //variaveis para requisição de permição e da camera
     private val PERMISSION_REQUEST_CAMERA = 0
@@ -70,7 +68,6 @@ class MainActivity : AppCompatActivity() {
     //variavel que tera o valor do orcamento
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -88,7 +85,6 @@ class MainActivity : AppCompatActivity() {
         recycler = findViewById(R.id.rvListaDeItens)
         txtGastoAteMomento = findViewById(R.id.txtGastoAteMomento)
         txtOrcamentoInicial = findViewById(R.id.txtOrcamentoInicial)
-
 
 
         //InputMethodManager imm = (InputMethodManager)getSystemService(context.INPUT_METHOD_SERVICE);
@@ -192,7 +188,7 @@ class MainActivity : AppCompatActivity() {
 
 
             recycler.setOnClickListener {
-                val posicao = item
+
             }
         }
 
