@@ -15,7 +15,6 @@ import android.widget.TextView
 import android.widget.Toast
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.view.View
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -137,10 +136,6 @@ class MainActivity : AppCompatActivity() {
 
                         //faco a verificalao para nao adicionar um item vazio ou nulo
                         if((produto != null) ||(!produto.id.equals(0)) ) {
-
-                            //produtoLista = ProdutoLista()
-                            //listaDeProduto.add(    produto)
-                            //System.out.println(produto.toString())
                             txtNomeProduto.text = produto.produto
                             txtValor.text = produto.valor.toString().replace('.',',')
                         }
@@ -187,24 +182,30 @@ class MainActivity : AppCompatActivity() {
             listaDeProduto.add(produtoLista)
             recycler.adapter = adapterProduto
 
-            val resultado = reallizaCalculos(produto.valor, produtoLista.quantidade, txtOrcamentoInicial.text.toString().toFloat())
+            var valProduto = produto.valor
+            var  valQtd = produtoLista.quantidade
+            var txtOrcamento = txtOrcamentoInicial.text.toString().replace(',', '.')
 
-            txtGastoAteMomento.text = "Gasto até o momento R$: " + resultado.replace('.', ',')
+
+
+            var orcamento = ajustaCasasDecimais(txtOrcamento)
+
+
+            var resultado = reallizaCalculos(valProduto, valQtd, orcamento.toDouble())
+
+            resultado = resultado.substring(0, indexOfChar(resultado) + 3)
+
+            txtGastoAteMomento.text = "Restante do orçamento R$: " + resultado.replace('.', ',')
 
             limparDadosAtuaisScanner()
         }
-
-        //adicionando textwacher
-        //txtOrcamentoInicial.addTextChangedListener(textWatcher)
-       // txtOrcamentoInicial.filters = arrayOf(FormataNumero(10, 2))
-        //txtOrcamentoInicial.addTextChangedListener(textWatcher)
-
-        //txtOrcamentoInicial.setOnClickListener {
+        //inicio pedindo o valor do orçamento para o usuario
+        showdialog()
+        //defino no listner do label o valor a ser selecionado
+        txtOrcamentoInicial.setOnClickListener {
             showdialog()
-        //}
-
+        }
     }
-
 
 
     private val textWatcher = object : TextWatcher {
@@ -213,45 +214,48 @@ class MainActivity : AppCompatActivity() {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-
             var str = s.toString()
             txtOrcamentoInicial.removeTextChangedListener(this)
 
             if (str.contains('.')){
                 str = str.replace('.', ',')
             }
-            //Toast.makeText(applicationContext, s, Toast.LENGTH_SHORT).show()
-            //Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
-            //txtOrcamentoInicial.setText(str)
-            //txtOrcamentoInicial.setSelection(str.length)
-
             txtOrcamentoInicial.addTextChangedListener(this)
-            txtOrcamentoInicial.setOnClickListener{
-
-
-            }
-
         }
     }
 
+    private fun ajustaCasasDecimais(orcamento : String ) : String{
+        var novoOrcamento = ""
+        var i = indexOfChar(orcamento)
+        if(orcamento.length - i == 2)
+            novoOrcamento = orcamento +"0"
+        else if(orcamento.length - i == 1)
+            novoOrcamento = "$orcamento.00"
+        return novoOrcamento
+    }
+
+    private fun indexOfChar(str: String): Int {
+        return str.indexOf('.')
+    }
 
     fun showdialog(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Digite o valor do Orçamento")
 
-// Set up the input
+        // Set up the input
         val input = EditText(this)
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setHint("Digite o orçamento")
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.hint = "Digite o orçamento"
         input.setRawInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER)
         input.filters = arrayOf(FormataNumero(10, 2))
-
         builder.setView(input)
-
-// Set up the buttons
+        // Set up the buttons
         builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
             // Here you get get input text from the Edittext
-            orcamento = input.text.toString()
+
+            var d = 0.0
+            d = input.text.toString().toDouble()
+            orcamento = d.toString()
             txtOrcamentoInicial.text = orcamento.replace('.', ',')
         })
         builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
@@ -259,15 +263,11 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-
-    private fun   reallizaCalculos(valorProduto : Float, qtdDeItens : Int, valorOrcamento : Float) : String{
+    private fun   reallizaCalculos(valorProduto : Float, qtdDeItens : Int, valorOrcamento : Double) : String{
         var valor  = "0,00"
         var soma  = valorProduto * qtdDeItens
-
         saldoAtual += soma
-
         valor = (valorOrcamento - saldoAtual).toString()
-
         return valor
     }
 
