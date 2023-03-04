@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="@color/teal_200">
+    android:layout_margin="5dp"
+    android:background="#8F9897">
 
     <TextView
         android:id="@+id/txtValorNaLista"
