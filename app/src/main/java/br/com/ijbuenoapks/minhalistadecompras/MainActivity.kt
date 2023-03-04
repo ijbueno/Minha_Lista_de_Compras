@@ -137,10 +137,6 @@ class MainActivity : AppCompatActivity() {
 
                         //faco a verificalao para nao adicionar um item vazio ou nulo
                         if((produto != null) ||(!produto.id.equals(0)) ) {
-
-                            //produtoLista = ProdutoLista()
-                            //listaDeProduto.add(    produto)
-                            //System.out.println(produto.toString())
                             txtNomeProduto.text = produto.produto
                             txtValor.text = produto.valor.toString().replace('.',',')
                         }
