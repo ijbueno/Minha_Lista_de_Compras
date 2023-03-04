@@ -188,7 +188,22 @@ class MainActivity : AppCompatActivity() {
             txtGastoAteMomento.text = "Gasto até o momento R$: " + resultado.replace('.', ',')
 
             limparDadosAtuaisScanner()
+
+
+
+            recycler.setOnClickListener {
+                val posicao = item
+            }
         }
+
+
+        fun removeProduct(model : ProdutoLista){
+            val posicao = listaDeProduto.indexOf(model)
+            listaDeProduto.remove(model)
+
+
+        }
+
 
         //adicionando textwacher
         //txtOrcamentoInicial.addTextChangedListener(textWatcher)

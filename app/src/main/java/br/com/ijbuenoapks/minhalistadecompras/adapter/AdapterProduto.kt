@@ -36,10 +36,15 @@ class AdapterProduto(
         }
     }
 
+
+
+
+
     override fun getItemCount(): Int = produtoLista.size
 
 
-        inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
+        inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val nome: TextView = itemView.findViewById<TextView>(R.id.txtNomeProdutoLista)
             val quantidade: TextView = itemView.findViewById<TextView>(R.id.txtQnatidadeNaLista)
             val valor: TextView = itemView.findViewById<TextView>(R.id.txtValorNaLista)
